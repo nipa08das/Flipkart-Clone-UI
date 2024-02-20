@@ -18,7 +18,7 @@ const navs = [
     path: "/seller/register",
     element: <Register role={"SELLER"}/>,
     requireAuth: false,
-    isVisibleAfterAuth: false,
+    isVisibleAfterAuth: true,
     role: "ALL",
   },
   {

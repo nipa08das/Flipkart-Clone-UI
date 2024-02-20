@@ -8,33 +8,34 @@ const AuthProvider = ({ child }) => {
     userId: "",
     username: "",
     role: "",
-    isAuthenticated: true,
+    isAuthenticated: false,
     accessExpiration: "",
     refreshExpiration: "",
   });
   const { validateAndRefresh } = DoLoginRefresh();
 
   const refresh = async () => {
-    const data = await validateAndRefresh();
-    console.log(data)
-    const user = {
-      userId: data.userId,
-      username: data.username,
-      role: data.userRole,
-      isAuthenticated: data.authenticated,
-      accessExpiration: data.accessExpiration,
-      refreshExpiration: data.refreshExpiration,
-    };
-    setAuth(user);
+    const user = await validateAndRefresh();
+    console.log(user)
+    if(user){
+      setAuth({...user});
+    }
+
   };
 
+  let isREfreshRequested = false;
   useEffect(() => {
-    refresh();
+    if(!isREfreshRequested)
+    {
+      isREfreshRequested = true;
+      refresh();
+    }
+    
   }, []);
 
-  useEffect(() => {
-    console.log(auth);
-  }, [auth]);
+  // useEffect(() => {
+  //   console.log(auth);
+  // }, [auth]);
 
   return (
     <AuthContext.Provider value={{ auth, setAuth }}>

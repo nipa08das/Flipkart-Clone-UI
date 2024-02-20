@@ -1,10 +1,13 @@
 import axios from "axios";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthProvider";
 
 const DoLoginRefresh = () => {
   const URL = "http://localhost:8080/api/v1/refresh-token";
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
+
+  const {setAuth} = useAuth();
 
   const refresh = async () => {
 
@@ -13,9 +16,19 @@ const DoLoginRefresh = () => {
     });
 
     if (response.status === 200) {
+      const user = {
+        userId: response.data.data.userId,
+        username: response.data.data.username,
+        role: response.data.data.userRole,
+        isAuthenticated: response.data.data.authenticated,
+        accessExpiration: response.data.data.accessExpiration,
+        refreshExpiration: response.data.data.refreshExpiration,
+      };
       //set the data into the local storage
-      console.log(response.data.data);
-      return response.data.data;
+      localStorage.setItem("user", JSON.stringify(user));
+      // save user auth response to local storage
+      setAuth(user);
+      return user;
     } else {
       navigate("/");
     }
