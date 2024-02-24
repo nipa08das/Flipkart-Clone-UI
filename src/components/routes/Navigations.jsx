@@ -5,12 +5,15 @@ import VerifyOTP from '../public/VerifyOTP.jsx'
 import Home from '../public/Home.jsx'
 import SellerDashboard from '../private/seller/SellerDashboard.jsx'
 import SellerOrders from '../private/seller/SellerOrders.jsx'
+import Store from '../private/seller/Store.jsx'
 import Cart from '../private/customer/Cart.jsx'
 import Orders from '../private/customer/Orders.jsx'
 import Wishlist from '../private/customer/Wishlist.jsx'
 import Account from '../private/common/Account.jsx'
 import EditProfile from '../private/common/EditProfile.jsx'
 import Search from '../public/Search'
+import Address from '../private/common/Address.jsx'
+import Contact from '../private/common/Contact.jsx'
 
 const navs = [
     // ----------------------- BEFORE AUTH --------------------------- 
@@ -72,6 +75,20 @@ const navs = [
     isVisibleAfterAuth: true,
     role: "ALL",
   },
+  {
+    path: "/add-address",
+    element: <Address />,
+    requireAuth: true,
+    isVisibleAfterAuth: true,
+    role: "ALL",
+  },
+  {
+    path: "/add-contact",
+    element: <Contact />,
+    requireAuth: true,
+    isVisibleAfterAuth: true,
+    role: "ALL",
+  },
   // --------------------------- CUSTOMER --------------------------
   {
     path: "/cart",
@@ -105,6 +122,13 @@ const navs = [
   {
     path: "/seller-orders",
     element: <SellerOrders />,
+    requireAuth: true,
+    isVisibleAfterAuth: true,
+    role: "SELLER",
+  },
+  {
+    path: "/add-store",
+    element: <Store />,
     requireAuth: true,
     isVisibleAfterAuth: true,
     role: "SELLER",

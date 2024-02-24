@@ -30,7 +30,7 @@ const VerifyOTP = () => {
     try {
       const response = await axios.post(URL, body, header);
       console.log(response);
-      navigate("/seller-dashboard")
+      navigate("/")
     } catch (error) {
       console.log(error);
     }

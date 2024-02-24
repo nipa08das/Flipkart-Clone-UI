@@ -1,115 +1,76 @@
 import React from "react";
+import Card from "./Card";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBackwardStep } from "@fortawesome/free-solid-svg-icons";
+import Dashboard from "./Dashboard";
 
 const SellerDashboard = () => {
   return (
-    <section className="container mx-auto px-4 py-8 w-11/12 max-w-screen-xl ">
-      <h1 className="text-3xl font-semibold mb-4 text-center  p-6 rounded-lg shadow-md">
-        Seller Dashboard
-      </h1>
-      <div className="flex-col justify-center items-center space-y-1">
-        {/* Revenue */}
-        <aside className=" p-6 rounded-lg shadow-md ">
-          <h2 className="text-xl font-semibold mb-4 text-black text-center">Revenue</h2>
+    <section className="container mx-auto px-4 py-8 w-full max-w-screen-xl flex">
+      <main className="h-full w-1/4">
+        <aside className=" p-2 rounded-lg shadow-md size-full">
+          <h3 className="text-center font-semibold text-slate-800">My Store</h3>
+        </aside>
+        <aside className="rounded-lg shadow-md w-full h-44 space-y-14 p-3">
+          <h4 className="font-semibold text-slate-800">Gross Revenue</h4>
           <div className="flex justify-center items-center">
-            <div className="rounded-lg shadow-md bg-sky-600 size-44 flex justify-center items-center">
-              <ul>
-                <li>
-                  <p className="text-gray-600 text-xl">Total Revenue</p>
-                </li>
-                <li>
-                  <p className="text-3xl text-center">Rs. 10,000</p>
-                </li>
-              </ul>
-            </div>
+            <p className=" text-gray-500">no data to show</p>
+          </div>
+        </aside>
+        {/* <aside>
+         <div>
+          <div>
+          <Dashboard iconName={"faHome"} name={"View Dashboard"} link={"/"}/>
+          </div>
+          <div>
+          <Dashboard iconName={"faHome"} name={"Manage Orders"} link={"/"}/>
+          </div>
+         </div>
+         <div>
+          <div>
+          <Dashboard iconName={"faHome"} name={"Add Product"} link={"/"}/>
+          </div>
+          <div>
+          <Dashboard iconName={"faHome"} name={"Edit Store Info"} link={"/"}/>
+          </div>
+         </div>
+        </aside> */}
+      </main>
+      <main className="size-full">
+        {/* Orders */}
+        <aside className=" p-2 rounded-lg shadow-md ">
+          <p className="font-semibold mb-4 text-slate-800">Total Orders</p>
+          <p className="text-gray-500 text-3xl font-bold border-b-2">
+            ---------
+          </p>
+          <div className="flex justify-center items-center w-full h-28">
+            <Card name={"Completed"} value={"00"} />
+            <Card name={"Yet to Dispatch"} value={"00"} />
+            <Card name={"Shipped"} value={"00"} />
+            <Card name={"Returned"} value={"00"} />
           </div>
         </aside>
         {/* Product Listing */}
-        <aside className=" p-6 rounded-lg shadow-md ">
-          <h2 className="text-xl font-semibold mb-4 text-black text-center">
+        <aside className=" p-2 rounded-lg shadow-md ">
+          <p className="font-semibold mb-4 text-slate-800 border-b-2">
             Product Listing
-          </h2>
-          <div className="flex justify-center items-center space-x-1">
-            <div className="rounded-lg shadow-md bg-sky-600 size-44 flex justify-center items-center">
-              <ul>
-                <li>
-                  <p className="text-gray-600 text-xl">Active</p>
-                </li>
-                <li>
-                  <p className="text-xl text-center">500</p>
-                </li>
-              </ul>
-            </div>
-            <div className="rounded-lg shadow-md bg-sky-600 size-44 flex justify-center items-center">
-              <ul>
-                <li>
-                  <p className="text-gray-600 text-xl">Out Of stock</p>
-                </li>
-                <li>
-                  <p className="text-xl text-center">50</p>
-                </li>
-              </ul>
-            </div>
-            <div className="rounded-lg shadow-md bg-sky-600 size-44 flex justify-center items-center">
-              <ul>
-                <li>
-                  <p className="text-gray-600 text-xl">Low Stock</p>
-                </li>
-                <li>
-                  <p className="text-xl text-center">300</p>
-                </li>
-              </ul>
-            </div>
+          </p>
+          <div className="flex justify-center items-center  w-full h-28">
+            <Card name={"Verified & Active"} value={"00"} />
+            <Card name={"Non-Verified"} value={"00"} />
+            <Card name={"Inactive"} value={"00"} />
+            <Card name={"Out of Stock"} value={"00"} />
+            <Card name={" Low Stock (< 3 units)"} value={"00"} />
           </div>
         </aside>
-        {/* Orders */}
-        <aside className=" p-6 rounded-lg shadow-md ">
-          <h2 className="text-xl font-semibold mb-4 text-black text-center">
-            Orders
-          </h2>
-          <div className="flex justify-center items-center space-x-1">
-            <div className="rounded-lg shadow-md bg-sky-600 size-52 flex justify-center items-center">
-              <ul>
-                <li>
-                  <p className="text-gray-600 text-xl">Total Orders</p>
-                </li>
-                <li>
-                  <p className="text-xl text-center">900</p>
-                </li>
-              </ul>
-            </div>
-            <div className="rounded-lg shadow-md bg-sky-600 size-52 flex justify-center items-center">
-              <ul>
-                <li>
-                  <p className="text-gray-600 text-xl">Completed Orders</p>
-                </li>
-                <li>
-                  <p className="text-xl text-center">500</p>
-                </li>
-              </ul>
-            </div>
-            <div className="rounded-lg shadow-md bg-sky-600 size-52 flex justify-center items-center">
-              <ul>
-                <li>
-                  <p className="text-gray-600 text-xl">Orders Yet to Dispatch</p>
-                </li>
-                <li>
-                  <p className="text-xl text-center">240</p>
-                </li>
-              </ul>
-            </div>
-            <div className="rounded-lg shadow-md bg-sky-600 size-52 flex justify-center items-center">
-              <ul>
-                <li>
-                  <p className="text-gray-600 text-xl">Shipped Orders</p>
-                </li>
-                <li>
-                  <p className="text-xl text-center">160</p>
-                </li>
-              </ul>
-            </div>
-          </div>
+        {/* Popular Products*/}
+        <aside className=" p-2 rounded-lg shadow-md  w-full h-28 ">
+          <p className="font-semibold mb-4 text-slate-800 space-y-6 border-b-2">
+            Your most popular products
+          </p>
+          <div className="flex justify-center items-center"></div>
         </aside>
-      </div>
+      </main>
     </section>
   );
 };
